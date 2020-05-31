@@ -127,7 +127,7 @@
 
         <span id="<%- form %>-<%- name %>-validation-error" class="tip error" aria-live="assertive">
             <span class="sr-only"></span>
-            <span id="<%- form %>-<%- name %>-validation-error-msg"></span>
+            <span id="<%- form %>-<%- name %>-validation-error-msg"><ul class="fa-ul"></ul></span>
         </span>
         <% if ( instructions ) { %> <span class="tip tip-input" id="<%- form %>-<%- name %>-desc"><%- instructions %></span><% } %>
     <% } %>

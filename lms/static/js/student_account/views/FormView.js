@@ -203,7 +203,8 @@
             },
 
             get_error_validation_node: function($el, $form) {
-                return $form.find('#' + $el.attr('id') + '-validation-error-msg');
+                var $node = $form.find('#' + $el.attr('id') + '-validation-error-msg');
+                return $node.find('ul');
             },
 
             interesting_fields: function($el) {
