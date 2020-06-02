@@ -1,4 +1,6 @@
-
+"""
+URLs file for the Entitlements API.
+"""
 
 from django.conf.urls import include, url
 

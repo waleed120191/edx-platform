@@ -1,4 +1,6 @@
-
+"""
+Tests for the API Serializers.
+"""
 
 import unittest
 
@@ -15,6 +17,9 @@ if settings.ROOT_URLCONF == 'lms.urls':
 
 @unittest.skipUnless(settings.ROOT_URLCONF == 'lms.urls', 'Test only valid in lms')
 class EntitlementsSerializerTests(ModuleStoreTestCase):
+    """
+    Tests for the Entitlement Serializers.
+    """
     def setUp(self):
         super(EntitlementsSerializerTests, self).setUp()
 
