@@ -145,6 +145,7 @@
                     elements = $form[0].elements,
                     i,
                     $n,
+                    tpl,
                     len = elements.length,
                     $el,
                     $label,
@@ -177,9 +178,11 @@
                         } else {
                             if (this.interesting_fields($el)) {
                                 $validationNode = this.get_error_validation_node($el, $form);
-                                $n = $(validation.message);
-                                $n.prepend('<i class="fa fa-exclamation-triangle"></i>');
                                 if ($validationNode) {
+                                    $n = $(validation.message);
+                                    tpl = HtmlUtils.template('<i class="fa fa-exclamation-triangle"></i>');
+
+                                    HtmlUtils.prepend($n, tpl());
                                     HtmlUtils.append($validationNode, HtmlUtils.HTML($n));
                                 }
 
