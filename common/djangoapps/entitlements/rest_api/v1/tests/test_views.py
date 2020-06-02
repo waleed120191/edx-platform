@@ -1051,6 +1051,8 @@ class EntitlementEnrollmentViewSetTest(ModuleStoreTestCase):
     def test_user_can_revoke_and_no_refund_available(
             self,
             mock_get_course_runs,
+            mock_refund_entitlement,
+            mock_is_refundable
     ):
         course_entitlement = CourseEntitlementFactory.create(user=self.user, mode=CourseMode.VERIFIED)
         mock_get_course_runs.return_value = self.return_values
@@ -1093,6 +1095,8 @@ class EntitlementEnrollmentViewSetTest(ModuleStoreTestCase):
     def test_user_is_not_unenrolled_on_failed_refund(
             self,
             mock_get_course_runs,
+            mock_refund_entitlement,
+            mock_is_refundable
     ):
         course_entitlement = CourseEntitlementFactory.create(user=self.user, mode=CourseMode.VERIFIED)
         mock_get_course_runs.return_value = self.return_values
