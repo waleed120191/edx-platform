@@ -115,17 +115,15 @@ def _check_excessive_login_attempts(user):
         if LoginFailures.is_user_locked_out(user):
             locked_out_period_in_sec = settings.MAX_FAILED_LOGIN_ATTEMPTS_LOCKOUT_PERIOD_SECS
 
-            raise AuthFailedError(Text(_('{li_start}{i_start}{i_end}To protect your account, it’s been temporarily '
-                                         'locked. Try again in {locked_out_period} minutes.{li_end}'
-                                         '{li_start}{i_start}{i_end}To be on the safe side, you can reset your '
-                                         'password {link_start}here{link_end} before you try again.{li_end}'))
+            raise AuthFailedError(Text(_('To protect your account, it’s been temporarily '
+                                         'locked. Try again in {locked_out_period} minutes.'
+                                         '{li_start}To be on the safe side, you can reset your '
+                                         'password {link_start}here{link_end} before you try again.'))
                                   .format(
                 link_start=HTML('<a "#login" class="form-toggle" data-type="password-reset">'),
                 link_end=HTML('</a>'),
                 li_start=HTML('<li>'),
                 li_end=HTML('</li>'),
-                i_start=HTML('<i class="fa fa-exclamation-triangle">'),
-                i_end=HTML('</i>'),
                 locked_out_period=int(locked_out_period_in_sec / 60)))
 
 
@@ -248,10 +246,10 @@ def _handle_failed_authentication(user, authenticated_user):
             if not LoginFailures.is_user_locked_out(user):
                 max_failures_allowed = settings.MAX_FAILED_LOGIN_ATTEMPTS_ALLOWED
                 remaining_attempts = max_failures_allowed - failure_count
-                raise AuthFailedError(Text(_('{li_start}{i_start}{i_end}Email or password is incorrect.{li_end}'
-                                             '{li_start}{i_start}{i_end}You have {remaining_attempts} more sign-in '
+                raise AuthFailedError(Text(_('Email or password is incorrect.'
+                                             '{li_start}You have {remaining_attempts} more sign-in '
                                              'attempts before your account is temporarily locked.{li_end}'
-                                             '{li_start}{i_start}{i_end} If you\'ve forgotten your password, click '
+                                             '{li_start}If you\'ve forgotten your password, click '
                                              '{link_start}here{link_end} to reset.{li_end}'
                                              ))
                                       .format(
@@ -259,18 +257,15 @@ def _handle_failed_authentication(user, authenticated_user):
                     link_end=HTML('</a>'),
                     li_start=HTML('<li>'),
                     li_end=HTML('</li>'),
-                    i_start=HTML('<i class="fa fa-exclamation-triangle">'),
-                    i_end=HTML('</i>'),
                     remaining_attempts=remaining_attempts))
             else:
                 _check_excessive_login_attempts(user)
 
-    raise AuthFailedError(Text(_('{li_start}{i_start}{i_end}Email or password is incorrect.{li_end}'
+    raise AuthFailedError(Text(_('Email or password is incorrect.'
                                  )).format(
                     li_start=HTML('<li>'),
                     li_end=HTML('</li>'),
-                    i_start=HTML('<i class="fa fa-exclamation-triangle">'),
-                    i_end=HTML('</i>')))
+                    ))
 
 
 def _handle_successful_authentication_and_login(user, request):

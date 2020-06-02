@@ -212,7 +212,7 @@
 
                 this.errors = [
                     StringUtils.interpolate(
-                        '{msg}', {
+                        '<li>{msg}</li>', {
                             msg: msg
                         }
                     )

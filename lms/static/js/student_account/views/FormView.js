@@ -144,6 +144,7 @@
                     $form = this.$form,
                     elements = $form[0].elements,
                     i,
+                    $n,
                     len = elements.length,
                     $el,
                     $label,
@@ -176,8 +177,10 @@
                         } else {
                             if (this.interesting_fields($el)) {
                                 $validationNode = this.get_error_validation_node($el, $form);
+                                $n = $(validation.message);
+                                $n.prepend('<i class="fa fa-exclamation-triangle"></i>');
                                 if ($validationNode) {
-                                    HtmlUtils.append($validationNode, HtmlUtils.HTML(validation.message));
+                                    HtmlUtils.append($validationNode, HtmlUtils.HTML($n));
                                 }
 
                                 $desc = $form.find('#' + $el.attr('id') + '-desc');
