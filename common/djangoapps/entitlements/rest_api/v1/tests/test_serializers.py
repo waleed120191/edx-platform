@@ -20,8 +20,6 @@ class EntitlementsSerializerTests(ModuleStoreTestCase):
     """
     Tests for the Entitlement Serializers.
     """
-    def setUp(self):
-        super(EntitlementsSerializerTests, self).setUp()
 
     def test_data(self):
         entitlement = CourseEntitlementFactory()
