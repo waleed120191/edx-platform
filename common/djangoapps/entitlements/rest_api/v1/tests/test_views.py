@@ -36,6 +36,9 @@ if settings.ROOT_URLCONF == 'lms.urls':
 
 @unittest.skipUnless(settings.ROOT_URLCONF == 'lms.urls', 'Test only valid in lms')
 class EntitlementViewSetTest(ModuleStoreTestCase):
+    """
+    Tests for the Entitlements API Views.
+    """
     ENTITLEMENTS_DETAILS_PATH = 'entitlements_api:v1:entitlements-detail'
 
     def setUp(self):
