@@ -261,11 +261,10 @@ def _handle_failed_authentication(user, authenticated_user):
             else:
                 _check_excessive_login_attempts(user)
 
-    raise AuthFailedError(Text(_('Email or password is incorrect.'
-                                 )).format(
-                    li_start=HTML('<li>'),
-                    li_end=HTML('</li>'),
-                    ))
+    raise AuthFailedError(Text(_('Email or password is incorrect.')).format(
+        li_start=HTML('<li>'),
+        li_end=HTML('</li>'),
+    ))
 
 
 def _handle_successful_authentication_and_login(user, request):
